@@ -1,0 +1,50 @@
+{%extends "layout.html"%}
+
+{%block title%}Rent Job - {{request.user.username}}{%endblock title%}
+
+{%block body%}
+{% load crispy_forms_tags %}
+
+<hr>
+<h3 style="text-align: center;" class="text-info">{{request.user.username}}</h3>
+<h5 style="text-align: center;" class="text-info">Hoş Geldiniz {{request.user.first_name}} {{request.user.last_name}}</h5>
+<hr>
+<div class="text-center">
+    <a class="btn btn-outline-info" href="{% url 'Autos:allcars'%}">Araç Kirala</a>
+</div>
+<hr>
+<h5 style="text-align: center;" class="text-info">Kiralama Geçmişi</h5>
+
+{%if rents%} 
+<div class="text-center">
+    <table class="table table-striped table-info">
+        <thead>
+          <tr>
+            <th scope="col">Otomobil</th>
+            <th scope="col">Kiralama Başlangıç Tarihi</th>
+            <th scope="col">Toplan Gün</th>
+            <th scope="col">İşlem Tarihi</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for rent in rents %}
+                <tr>
+                    <td>{{rent.rentedCar}}</td>
+                    <td>{{rent.rentalDate}}</td>
+                    <td>{{rent.totalDays}}</td>
+                    <td>{{rent.transactionDate}}</td>
+                </tr> 
+            {%endfor%}
+          
+          
+        </tbody>
+    </table>
+</div>
+{%else%}
+<div class="alert alert-info">Henüz bir araç kiralamadınız.</div>
+{%endif%}
+
+
+
+
+{%endblock body%}

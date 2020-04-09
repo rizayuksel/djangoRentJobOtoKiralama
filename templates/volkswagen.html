@@ -1,0 +1,51 @@
+{%extends "layout.html"%}
+
+{%block title%}Rent Job - Volkswagen{%endblock title%}
+
+{%block body%}
+
+
+<hr>
+<h3 style="text-align: center;" class="text-info">Volkswagen</h3>
+<hr>
+
+<!-- #Veri tabanında otomobil var mı onu kontrol etmek için -->
+{%if allCars %} 
+<div class="row">
+{%for auto in allCars %}
+
+<div class="col-4">
+<div class="card-group">
+<div class="card bg-info mb-3" style="width: 18rem;">
+  <img class="card-img-top" src="{{auto.autoImage.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{auto.title}}</h5>
+    <p>Günlük Ücret: {{auto.price}} tl</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item bg-info">Model: {{auto.year}}</li>
+      <li class="list-group-item bg-info">Vites: {{auto.gear}}</li>
+      <li class="list-group-item bg-info">Tip: {{auto.carClass}}</li>
+  </ul>
+  <div class="card-body">
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'Autos:detail' auto.id%}" class="btn btn-info">Detay</a>
+      <a href="{% url 'Rent:rentacar'%}" class="btn btn-info">Kirala</a>
+      {% else %}
+      <a href="{% url 'Autos:detail' auto.id%}" class="btn btn-info">Detay</a>
+      {% endif %}
+  </div>
+</div>
+</div>
+</div>
+{% if forloop.counter|divisibleby:3 %}
+</div>
+<div class="row">
+{%endif%}
+
+{%endfor%}
+{%else%}
+<div class="alert alert-danger">Otomobil bulunmuyor</div>
+{%endif%}
+
+{%endblock body%}

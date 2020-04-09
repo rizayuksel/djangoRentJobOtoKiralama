@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index'%}">Rent Job</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="navbar-collapse collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Autos:allcars'%}">Araçlar</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">Markalar</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="{% url 'Autos:audi'%}">Audi</a>
+                      <a class="dropdown-item" href="{% url 'Autos:bmw'%}">BMW</a>
+                      <a class="dropdown-item" href="{% url 'Autos:mazda'%}">Mazda</a>
+                      <a class="dropdown-item" href="{% url 'Autos:volkswagen'%}">Volkswagen</a>
+                      <a class="dropdown-item" href="{% url 'Autos:volvo'%}">Volvo</a>
+                      
+                    </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'history'%}">Tarihçemiz</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'office'%}">İletişim</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+
+              {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link text-info" href="{% url 'User:profile'%}">{{request.user.username}}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-info" href="{% url 'User:logout'%}">Çıkış Yap</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link text-info" href="{% url 'User:login'%}">Giriş Yap</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-info" href="{% url 'User:register'%}">Kayıt ol</a>
+                </li>
+              {% endif %} 
+
+          </ul>
+          <form class="form-inline" method="GET" action="{% url 'Autos:allcars'%}">
+            <div class="form-group">
+            {%csrf_token%}
+            <input class="form-control mr-sm-2" name="keyword" type="text" placeholder="Araç Bul" aria-label="Search">
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Bul</button>
+            </div>
+          </form>
+          
+        </div>
+      </nav>

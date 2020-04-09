@@ -1,0 +1,74 @@
+{%extends "layout.html"%}
+{%load static%}
+{%block title%}Rent Job - Ana sayfa{%endblock title%}
+
+{%block body%}
+<hr>
+<h3 style="text-align: center;" class="text-info">Rent Job</h3>
+<hr>
+<br>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="{% url 'Autos:allcars'%}"><img class="d-block w-100" src="{%static 'logo2.png'%}" alt="Araçlar"></a>
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Araçlar</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <a href="{% url 'Autos:audi'%}"><img class="d-block w-100" src="{%static 'audi.png'%}" alt="Audi"></a>
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Audi</h5>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <a href="{% url 'Autos:bmw'%}"><img class="d-block w-100" src="{%static 'bmw.png'%}" alt="Bmw"></a>
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Bmw</h5>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <a href="{% url 'Autos:mazda'%}"><img class="d-block w-100" src="{%static 'mazda.png'%}" alt="Mazda"></a>
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Mazda</h5>
+            <p> </p>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <a href="{% url 'Autos:volkswagen'%}"><img class="d-block w-100" src="{%static 'vw.png'%}" alt="Volkswagen"></a>
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Volkswagen</h5>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <a href="{% url 'Autos:volvo'%}"><img class="d-block w-100" src="{%static 'volvo.jpg'%}" alt="Volvo"></a>
+        <div class="carousel-caption d-none d-md-block">
+            <h5 class="text-dark">Volvo</h5>
+          </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+</div>
+</div>
+{%endblock body%}

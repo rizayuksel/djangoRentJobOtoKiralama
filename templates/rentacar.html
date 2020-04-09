@@ -1,0 +1,23 @@
+{%extends "layout.html"%}
+
+{%block title%}Rent Job - Kirala{%endblock title%}
+
+{%block body%}
+
+{% load crispy_forms_tags %}
+
+<hr>
+<h3 style="text-align: center;" class="text-info">Kirala</h3>
+<hr>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form method="POST">
+            {% csrf_token%}
+            {{form|crispy}}
+            <br>
+            <button type="submit" class="btn btn-outline-info">Kirala</button>
+        </form>
+    </div>
+</div>
+
+{%endblock body%}
